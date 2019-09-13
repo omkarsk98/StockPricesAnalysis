@@ -12,7 +12,7 @@ mydb = mysql.connector.connect(
 mycursor = mydb.cursor()
 
 mycursor.execute(
-    "select date, open, high, low, close, volume, (select open from hdfc h1 where h1.id>h.id order by id asc limit 1) as 'next day open' from hdfc h;")
+    "select date, open, high, low, close, volume, (select open from hdfc h1 where h1.id>h.id order by id asc limit 1) as 'next day open' from hdfc h limit 10;")
 
 myresult = mycursor.fetchall()
 
