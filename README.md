@@ -14,3 +14,26 @@
 | 2015-01-12 | 969  | 974  | 965 | 967   | 1031603 | 969           |
 | 2015-01-13 | 969  | 972  | 956 | 963   | 1457087 | 960           |
 | 2015-01-14 | 960  | 975  | 960 | 964   | 921308  | 990           |
+
+## File Structures  
+```bash
+.  
+├── queryFromMySQL.py  
+├── README.md  
+└── Visualisations  
+    └── Explorative  
+        ├── CandleStickPatter_50days.png  
+        ├── CandleStickPattern_1000days.png  
+        ├── CandleStickPattern_100days.png  
+        ├── CandleStickPattern_200days.png  
+        ├── CandleStickPattern_500days.png  
+        ├── CandleStickPattern_AllData.png  
+        ├── Line_Graph_1000days.png  
+        ├── Line_Graph_100days.png  
+        ├── Line_Graph_200days.png  
+        ├── Line_Graph_500days.png  
+        ├── Line_Graph_50days.png  
+        └── Line_Graph_AllData.png  
+  
+2 directories, 14 files  
+```
