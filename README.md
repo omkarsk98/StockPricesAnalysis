@@ -1,6 +1,6 @@
 # run
 
-`python3 visualise.py.py`
+`python3 visualise.py.py`  
 This file will output the visualisation of the data. The latest output results in formation of ohlc graph with '5 Days Moving Average' of the entire data. The graph for the same can be found in ./Visualisations/Explorative/OHLC_with_5SMA(total).png
 
 # data
