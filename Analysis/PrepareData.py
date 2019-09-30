@@ -1,5 +1,6 @@
 import numpy as np
 
+
 def prepareData(data, steps):
     """ 
       data: input data. It contains the following columns:
@@ -20,10 +21,23 @@ def prepareData(data, steps):
         if end_ix > len(data)-1:
             break
         # gather input and output parts of the pattern
-        seq_x, seq_y = data[i:end_ix, 1:7], data[end_ix, :][1]
+        seq_x, seq_y = data[i:end_ix, 1:6], data[end_ix,0]
         X.append(seq_x)
         y.append(seq_y)
-        features = np.array(X)
-        labels = np.array(y)
-        labels = labels.reshape((len(labels)), 1)
+    features = np.array(X)
+    labels = np.array(y)
+    labels = labels.reshape((len(labels)), 1)
+    return features, labels
+
+
+def getRNNData(data):
+    X, y = list(), list()
+    for i in range(len(data)):
+        seq_x, seq_y = data[i][1:7], data[i][7:]
+        X.append(seq_x)
+        y.append(seq_y)
+    features = np.array(X)
+    labels = np.array(y)
+    features = features.reshape(features.shape[0], features.shape[1], 1)
+    # labels = labels.reshape(labels.shape[0], labels.shape[1], 1)
     return features, labels
