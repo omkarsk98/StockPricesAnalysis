@@ -1,0 +1,9 @@
+{
+  "movingAverages": {
+    "5DaysMovingAverage": "select h1.date, h1. close, Round((select sum(h2.close)/count(h2.close) from hdfc as h2 where datediff(h1.date,h2.date) between 0 and 4), 2) as '5 days moving average' from hdfc as h1 order by h1.date desc"
+  },
+  "ohlcv": "select open, high, low, close, volume from hdfc",
+  "ohlcvWithNextDayOpen": "select date, open, high, low, close, volume, (select open from hdfc h1 where h1.id>h.id order by id asc limit 1) as 'next day open' from hdfc h",
+  "ohlcv_NextDayOpen_5DMA": "select h1.date, h1. close, Round((select sum(h2.close)/count(h2.close) from hdfc as h2 where datediff(h1.date,h2.date) between 0 and 4), 2) as '5 days moving average' from hdfc as h1 order by h1.date desc",
+  "final": "select h1.date, h1.open, h1.high, h1.low, h1.close, h1.volume, Round((select sum(h2.close)/count(h2.close) from hdfc as h2 where datediff(h1.date,h2.date) between 0 and 4), 0) as '5 days moving average', (select open from hdfc h3 where h3.id>h1.id order by id asc limit 1) as 'next day open' from hdfc as h1 order by h1.date"
+}
