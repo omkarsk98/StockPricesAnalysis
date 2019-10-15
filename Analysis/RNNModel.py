@@ -13,6 +13,7 @@ os.system('clear')
 hdfc_df = Query.getDataSet()
 
 hdfc_data = np.array(hdfc_df)
+
 # choose a number of time steps, this says the number of days to be taken for trend formation
 # n_steps + 1 will be used as day for which opening is to be predicted
 n_steps = 60
@@ -28,15 +29,14 @@ print(train_features.shape, train_labels.shape)
 # n_features = features.shape[2]
 
 # configure the model
+
 model = Sequential()
-model.add(LSTM(100, batch_input_shape=(2, n_steps,
-                                       train_features.shape[2]), dropout=0.0, recurrent_dropout=0.0, stateful=True,     kernel_initializer='random_uniform'))
-model.add(Dropout(0.5))
-model.add(Dense(20,activation='relu'))
-model.add(Dense(1,activation='sigmoid'))
-model.compile(optimizer='adam', loss='mse', metrics=['accuracy'])
+model.add(LSTM(units=50, return_sequences=True, input_shape=(n_steps,1)))
+model.add(LSTM(units=50))
+model.add(Dense(6))
+model.compile(loss='mean_squared_error', optimizer='adam')
 # fit model
-model.fit(train_features, train_labels, epochs=1000, verbose=1)
+model.fit(train_features, train_labels, epochs=10, batch_size=1, verbose=1)
 
 yhat = model.predict(test_features, verbose=0)
 
