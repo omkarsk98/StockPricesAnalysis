@@ -25,6 +25,7 @@ if result["labelsMean"]==None:
 
 plt.plot(dates[900:], yhat, color='blue', linewidth=2)
 plt.plot(dates[900:], test_labels, color="green", linewidth=2)
-plt.legend(["predicted","actual"])
+plt.plot(dates[900:], features[900:,5], color="red", linewidth=2)
+plt.legend(["predicted","actual", "5DMA"])
 plt.title("Plot of time vs opening price")
 plt.show()
