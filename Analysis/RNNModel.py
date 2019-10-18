@@ -25,18 +25,20 @@ features, labels = prepData.prepareData(hdfc_data, n_steps)
 train_features, train_labels = features[:900], labels[:900]
 test_features, test_labels = features[900:1000], labels[900:1000]
 print(train_features.shape, train_labels.shape)
-
 # n_features = features.shape[2]
 
 # configure the model
 
 model = Sequential()
-model.add(LSTM(units=50, return_sequences=True, input_shape=(n_steps,1)))
-model.add(LSTM(units=50))
-model.add(Dense(6))
+model.add(LSTM(units=100, return_sequences=True, input_shape=(n_steps,train_labels.shape[1]), use_bias=True, dropout=0.8))
+model.add(LSTM(units=50, use_bias=True, dropout=0.8))
+# model.add(LSTM(units=50, use_bias=True, dropout=0.9))
+model.add(Dense(train_labels.shape[1], use_bias=True))
 model.compile(loss='mean_squared_error', optimizer='adam')
 # fit model
-model.fit(train_features, train_labels, epochs=10, batch_size=1, verbose=1)
+os.system("clear")
+print(train_features.shape, train_labels.shape)
+model.fit(train_features, train_labels, epochs=10, batch_size=1, verbose=1, validation_data=(test_features, test_labels))
 
 yhat = model.predict(test_features, verbose=0)
 
