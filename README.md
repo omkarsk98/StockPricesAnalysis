@@ -1,7 +1,5 @@
-# run
-
-`python3 visualise.py.py`  
-This file will output the visualisation of the data. The latest output results in formation of ohlc graph with '5 Days Moving Average' of the entire data. The graph for the same can be found in ./Visualisations/Explorative/OHLC_with_5SMA(total).png
+# Objective
+HDFC bank\'s stock prices are considered for this project. The objective is to predict the next day opening price on the basis of open(the price at which the stock opened on a specific day), high(highest price the stock had on a specific day), low(lowest price the stock had on a specific day), close(the price at which the stock closed on a day), volume(number of transaction that occured for this company. i.e. HDFC bank on a specific day), 5DMA(5 days moving average of the opening price).
 
 # data
 
@@ -21,35 +19,21 @@ Last attribute will be used as label and all the remaining attributes will be us
 | 2015-01-13 | 969  | 972  | 956 | 963   | 1457087 | 968.67                | 960           |
 | 2015-01-14 | 960  | 975  | 960 | 964   | 921308  | 964.67                | 990           |
 
-# File Structures
 
-```bash
-.  
-├── Queries  
-│   └── queries.json  
-├── README.md  
-├── Visualisations  
-│   └── Explorative  
-│       ├── CandleStickPatter_50days.png  
-│       ├── CandleStickPattern_1000days.png  
-│       ├── CandleStickPattern_100days.png  
-│       ├── CandleStickPattern_200days.png  
-│       ├── CandleStickPattern_500days.png  
-│       ├── CandleStickPattern_AllData.png  
-│       ├── Latest 100 days moving average.png  
-│       ├── Line_Graph_1000days.png  
-│       ├── Line_Graph_100days.png  
-│       ├── Line_Graph_200days.png  
-│       ├── Line_Graph_500days.png  
-│       ├── Line_Graph_50days.png  
-│       ├── Line_Graph_AllData.png  
-│       ├── OHLC_with_5SMA(latest 100).png  
-│       └── OHLC_with_5SMA(total).png  
-└── visualise.py  
-  
-3 directories, 18 files  
-```
+# Visualisation
+The visualisation is performed using Japnese Candle Stick Pattern and an addional line graph to plot the 5 days moving average. [This](./Visualisation/Explorative/OHLC_with_5SMA(total).png) plot demonstrates the entire data since 2015. It plot the OHLC and 5SMA. Since this graph is difficult to understand, [this](./Visualisation/Explorative/OHLC_with_5SMA(latest_100).png) can be seen (also mentioned below). This graph plots the OHLC price and 5SMA. Green color indicates a positive day and red color indicates a negative day. <br>
+![Alt text](./Visualisation/Explorative/OHLC_with_5SMA(latest_100).png)
+
+
+# run
+`python3 Analysis/LinearRegression.py` <br>  
+This file will develop the Linear Regression model and plot a graph containing the following plots.<br>
+1. Predicted opening price for the next day by linear regression.<br>
+2. Value of next day opening on the basis of 5SMA. Generally this 5SMA is also used as a method to predict the next day open. <br>
+3. Actual opening price for the next day.<br>
+*The graph contains the respective labels for the plots.*
 
 # Outcome
 Linear Regression Model predicts the next day opening price with an accuracy of 99% <br>
 ![Alt text](./Results/LinearRegression.png)
+*This linear regression model has an accuracy of 95%*

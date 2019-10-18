@@ -2,7 +2,7 @@ import PrepareData as prepData
 import Query
 import numpy as np
 from sklearn.linear_model import LinearRegression
-from sklearn.metrics import mean_squared_error, r2_score
+from sklearn.metrics import mean_squared_error
 import matplotlib.pyplot as plt
 
 hdfc_df = Query.getDataSet()
@@ -20,8 +20,7 @@ yhat = model.predict(test_features)
 
 acc = model.score(test_features, test_labels)
 print("Accuracy:"+str(acc*100))
-if result["labelsMean"]==None:
-    result["labelsMean"] = 1
+print("RMSE:"+str(np.sqrt(mean_squared_error(test_labels, yhat))))
 
 plt.plot(dates[900:], yhat, color='blue', linewidth=2)
 plt.plot(dates[900:], test_labels, color="green", linewidth=2)
