@@ -35,5 +35,5 @@ This file will develop the Linear Regression model and plot a graph containing t
 
 # Outcome
 Linear Regression Model predicts the next day opening price with an accuracy of 95% <br>
-![Alt text](./Results/LinearRegression.png)
+![Alt text](./Results/LinearRegression.png) <br>
 *This linear regression model has an accuracy of 95%*
