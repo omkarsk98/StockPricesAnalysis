@@ -23,8 +23,8 @@ print("Accuracy:"+str(acc*100))
 if result["labelsMean"]==None:
     result["labelsMean"] = 1
 
-plt.plot(dates[900:], test_labels, color="green", linewidth=2)
 plt.plot(dates[900:], yhat, color='blue', linewidth=2)
+plt.plot(dates[900:], test_labels, color="green", linewidth=2)
 plt.legend(["predicted","actual"])
 plt.title("Plot of time vs opening price")
 plt.show()
