@@ -1,25 +1,4 @@
-import mysql.connector
 import pandas as pd
-import json
-# import query string
-QUERIES = json.loads(open("Queries/queries.json").read())
-# configure mysql connection
-mydb = mysql.connector.connect(
-    host="localhost",
-    user="StockAdmin",
-    passwd="random",
-    database="Stocks"
-)
-
-mycursor = mydb.cursor()
-q = QUERIES["final"] + ";"
-# execute query and fetch result
-mycursor.execute(q)
-myresult = mycursor.fetchall()
-# convert to panda dataframe
-hdfc_data = pd.DataFrame(myresult, columns=[
-    'date', 'open', 'high', 'low', 'close', 'volume', '5 days moving average', 'next day open'])
-
 
 def getDataSet():
     """
@@ -33,4 +12,7 @@ def getDataSet():
         5 days moving average: moving average of the closing price of last 5 days for that day
         next day open: opening price for the next day   
     """
+    hdfc_data = pd.read_csv("./DataSource/HDFC_Stocks.csv")
+    hdfc_data.columns = ['date', 'open', 'high', 'low', 'close', 'volume', '5 days moving average', 'next day open']
+    hdfc_data["date"] = pd.to_datetime(hdfc_data["date"])
     return hdfc_data
