@@ -18,8 +18,8 @@ Last attribute will be used as label and all the remaining attributes will be us
 | 2015-01-12 | 969  | 974  | 965 | 967   | 1031603 | 969.33                | 969           |
 | 2015-01-13 | 969  | 972  | 956 | 963   | 1457087 | 968.67                | 960           |
 | 2015-01-14 | 960  | 975  | 960 | 964   | 921308  | 964.67                | 990           |
-<br>
-Data collected from [yahoo finance](https://in.finance.yahoo.com/quote/HDFCBANK.NS/history?period1=1420050600&period2=1566757800&interval=1d&filter=history&frequency=1d). <br>
+
+Data collected from [yahoofinance](https://in.finance.yahoo.com/quote/HDFCBANK.NS/history?period1=1420050600&period2=1566757800&interval=1d&filter=history&frequency=1d). <br>
 *5 days moving average anf next day open are programatically calculated. Above table is stored in [this](./DataSource/HDFC_Stocks.csv) csv file*
 
 # Visualisation
