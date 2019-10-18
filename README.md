@@ -21,8 +21,8 @@ Last attribute will be used as label and all the remaining attributes will be us
 
 
 # Visualisation
-The visualisation is performed using Japnese Candle Stick Pattern and an addional line graph to plot the 5 days moving average. [This](./Visualisation/Explorative/OHLC_with_5SMA(total).png) plot demonstrates the entire data since 2015. It plot the OHLC and 5SMA. Since this graph is difficult to understand, [this](./Visualisation/Explorative/OHLC_with_5SMA(latest_100).png) can be seen (also mentioned below). This graph plots the OHLC price and 5SMA. Green color indicates a positive day and red color indicates a negative day. <br>
-![Alt text](./Visualisation/Explorative/OHLC_with_5SMA(latest_100).png)
+The visualisation is performed using Japnese Candle Stick Pattern and an addional line graph to plot the 5 days moving average. [This](./Visualisations/Explorative/OHLC_with_5SMA(total).png) plot demonstrates the entire data since 2015. It plot the OHLC and 5SMA. Since this graph is difficult to understand, [this](./Visualisations/Explorative/OHLC_with_5SMA(latest_100).png) can be seen (also mentioned below). This graph plots the OHLC price and 5SMA. Green color indicates a positive day and red color indicates a negative day. <br>
+![Alt text](./Visualisations/Explorative/OHLC_with_5SMA(latest_100).png)
 
 
 # run
@@ -34,6 +34,6 @@ This file will develop the Linear Regression model and plot a graph containing t
 *The graph contains the respective labels for the plots.*
 
 # Outcome
-Linear Regression Model predicts the next day opening price with an accuracy of 99% <br>
+Linear Regression Model predicts the next day opening price with an accuracy of 95% <br>
 ![Alt text](./Results/LinearRegression.png)
 *This linear regression model has an accuracy of 95%*
