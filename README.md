@@ -49,3 +49,7 @@ Last attribute will be used as label and all the remaining attributes will be us
   
 3 directories, 18 files  
 ```
+
+# Outcome
+Linear Regression Model predicts the next day opening price with an accuracy of 99% <br>
+![Alt text](./Results/LinearRegression.png)

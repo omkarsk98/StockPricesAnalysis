@@ -1,5 +1,6 @@
 import numpy as np
 
+
 def prepareData(data, steps):
     """ 
       data: input data. It contains the following columns:
@@ -26,4 +27,23 @@ def prepareData(data, steps):
         features = np.array(X)
         labels = np.array(y)
         labels = labels.reshape((len(labels)), 1)
-    return features, labels
+    return features[:len(features)-1], labels[:len(labels)-1]
+
+
+def getLRData(data, normalise=False, deci=4, addNoise=False):
+    features, labels = np.array(
+        data[:len(data)-2, 1:7]), np.array(data[:len(data)-2, 7])
+    labels = labels.reshape(len(labels), 1)
+    dates = np.array(data[:len(data)-2, 0])
+    dates = dates.reshape(len(dates), 1)
+    labelsMean, featuresMean = None, None
+    if normalise == True:
+        featuresMean = np.mean(features, axis=0, keepdims=True)
+        labelsMean = np.mean(labels, keepdims=True)
+        features, labels = (features/featuresMean), (labels/labelsMean)
+        features, labels = np.round(features.astype(np.double), decimals=deci), np.round(
+            labels.astype(np.double), decimals=deci)
+
+    result = {"dates": dates, "features": features, "labels": labels,
+              "labelsMean": labelsMean, "featuresMean": featuresMean}
+    return result
