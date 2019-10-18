@@ -1,7 +1,7 @@
 # Objective
 HDFC bank\'s stock prices are considered for this project. The objective is to predict the next day opening price on the basis of open(the price at which the stock opened on a specific day), high(highest price the stock had on a specific day), low(lowest price the stock had on a specific day), close(the price at which the stock closed on a day), volume(number of transaction that occured for this company. i.e. HDFC bank on a specific day), 5DMA(5 days moving average of the opening price).
 
-# data
+# Data
 
 Data contains date, open, high, low, close, volume, 5 days moving average, next day open.  
 Last attribute will be used as label and all the remaining attributes will be used as features.
@@ -18,14 +18,16 @@ Last attribute will be used as label and all the remaining attributes will be us
 | 2015-01-12 | 969  | 974  | 965 | 967   | 1031603 | 969.33                | 969           |
 | 2015-01-13 | 969  | 972  | 956 | 963   | 1457087 | 968.67                | 960           |
 | 2015-01-14 | 960  | 975  | 960 | 964   | 921308  | 964.67                | 990           |
-
+<br>
+Data collected from [yahoo finance](https://in.finance.yahoo.com/quote/HDFCBANK.NS/history?period1=1420050600&period2=1566757800&interval=1d&filter=history&frequency=1d). <br>
+*5 days moving average anf next day open are programatically calculated. Above table is stored in [this](./DataSource/HDFC_Stocks.csv) csv file*
 
 # Visualisation
 The visualisation is performed using Japnese Candle Stick Pattern and an addional line graph to plot the 5 days moving average. [This](./Visualisations/Explorative/OHLC_with_5SMA(total).png) plot demonstrates the entire data since 2015. It plot the OHLC and 5SMA. Since this graph is difficult to understand, [this](./Visualisations/Explorative/OHLC_with_5SMA(latest_100).png) can be seen (also mentioned below). This graph plots the OHLC price and 5SMA. Green color indicates a positive day and red color indicates a negative day. <br>
 ![Alt text](./Visualisations/Explorative/OHLC_with_5SMA(latest_100).png)
 
 
-# run
+# Code
 `python3 Analysis/LinearRegression.py` <br>  
 This file will develop the Linear Regression model and plot a graph containing the following plots.<br>
 1. Predicted opening price for the next day by linear regression.<br>
