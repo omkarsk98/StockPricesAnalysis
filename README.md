@@ -38,9 +38,9 @@ This file will develop the Linear Regression model and plot a graph containing t
 # Outcome
 Linear Regression Model predicts the next day opening price with an accuracy of 95% <br>
 ![Alt text](./Results/LinearRegression.png) <br>
-The above graph shows the prediction for next 242 days. A prediction graph for next 100 days is shown below where the graph can be seen mre clearly. 
+The above graph shows the prediction for next 242 days. A prediction graph for next 100 days is shown below where the graph can be seen more clearly. <br>
 ![Alt text](./Results/LinearRegressionNext100Days.png) <br>
-In the above graph, it is observed that the 5 days moving hich shows the trend with a slight delay ust gives the smooth curves, it does not highlight the sharpness of the prediction. However, the linear regression model seems very sharp and covers minute changes in the prices of the stock. <br>
+In the above graph, it is observed that the 5 days moving average shows the trend with a slight delay and it just gives the smooth curves, it does not highlight the sharpness of the prediction. However, the linear regression model seems very sharp and covers minute changes in the prices of the stock. <br>
 *This linear regression model has an accuracy of 95%*
 
 # References
