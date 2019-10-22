@@ -38,4 +38,12 @@ This file will develop the Linear Regression model and plot a graph containing t
 # Outcome
 Linear Regression Model predicts the next day opening price with an accuracy of 95% <br>
 ![Alt text](./Results/LinearRegression.png) <br>
+The above graph shows the prediction for next 242 days. A prediction graph for next 100 days is shown below where the graph can be seen mre clearly. 
+![Alt text](./Results/LinearRegressionNext100Days.png) <br>
+In the above graph, it is observed that the 5 days moving hich shows the trend with a slight delay ust gives the smooth curves, it does not highlight the sharpness of the prediction. However, the linear regression model seems very sharp and covers minute changes in the prices of the stock. <br>
 *This linear regression model has an accuracy of 95%*
+
+# References
+1. [Predicting stock market using machine learning](https://www.analyticsvidhya.com/blog/2018/10/predicting-stock-price-machine-learningnd-deep-learning-techniques-python/)
+2. [Japnese Candlestick Pattern in python](https://matplotlib.org/api/finance_api.html)
+3. [Linear Regression in sklearn](https://scikit-learn.org/stable/auto_examples/linear_model/plot_ols.html)
