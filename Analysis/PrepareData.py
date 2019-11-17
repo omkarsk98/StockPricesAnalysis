@@ -46,12 +46,11 @@ def getLRData(data, normalise=False, deci=4):
           featuresMean: array of 6 values that are means of the respective columns.
     '''
     features, labels = np.array(
-        data[:len(data)-2, 1:7]), np.array(data[:len(data)-2, 7])
+        data[:, 1:10]), np.array(data[:, 10])
     labels = labels.reshape(len(labels), 1)
-    dates = np.array(data[:len(data)-2, 0])
-    # dates = np.datetime64(dates)
+    dates = np.array(data[:, 0])
     dates = dates.reshape(len(dates), 1)
-    labelsMean, featuresMean = 1, np.array([1, 1, 1, 1, 1, 1])
+    labelsMean, featuresMean = 1, np.array([1, 1, 1, 1, 1, 1, 1, 1, 1, 1])
     if normalise == True:
         featuresMean = np.mean(features, axis=0, keepdims=True)
         labelsMean = np.mean(labels, keepdims=True)
@@ -59,6 +58,7 @@ def getLRData(data, normalise=False, deci=4):
         features, labels = np.round(features.astype(np.double), decimals=deci), np.round(
             labels.astype(np.double), decimals=deci)
 
-    result = {"dates": dates, "features": features, "labels": labels,
+    DMA5, DMA10, DMA20, DMA50 = features[:,0:6], features[:,[0,1,2,3,4,6]], features[:,[0,1,2,3,4,7]], features[:,[0,1,2,3,4,8]]
+    result = {"dates": dates, "features":features, "5DMA": DMA5, "10DMA": DMA10,"20DMA": DMA20,"50DMA": DMA50, "labels": labels,
               "labelsMean": labelsMean, "featuresMean": featuresMean}
     return result

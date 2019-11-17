@@ -12,7 +12,7 @@ def getDataSet():
         5 days moving average: moving average of the closing price of last 5 days for that day
         next day open: opening price for the next day   
     """
-    hdfc_data = pd.read_csv("./DataSource/HDFC_Stocks.csv")
-    hdfc_data.columns = ['date', 'open', 'high', 'low', 'close', 'volume', '5 days moving average', 'next day open']
+    hdfc_data = pd.read_csv("../DataSource/hdfc.csv")
     hdfc_data["date"] = pd.to_datetime(hdfc_data["date"])
+    hdfc_data['next day open'] = hdfc_data['next day open'].astype(float)
     return hdfc_data
