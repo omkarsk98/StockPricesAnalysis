@@ -38,7 +38,7 @@ This file will develop the Linear Regression model and plot a graph containing t
 
 # Outcome
 Linear Regression Model predicts the next day opening price with an accuracy of 88% when computed using 5 DMA. <br>
-![Alt text](.Visulisation/Results/5dma.png) <br>
+![5 days moving average graph](./Visualisations/Results/5dma.png) <br>
 Other Accuracies computed using 5 DMA, 10DMA, 20DMA and 50DMA are as follows <br>
 |Moving Average Used|Accuracy|
 |-----|-----|
@@ -48,11 +48,11 @@ Other Accuracies computed using 5 DMA, 10DMA, 20DMA and 50DMA are as follows <br
 |50 days|84%|
 
 Graphs for othe rmoving averages are as follows.<br>
-![10 days moving average graph](./Visulisation/Results/10dma.png) <br>
-![20 days moving average graph](./Visulisation/Results/20dma.png) <br>
-![50 days moving average graph](./Visulisation/Results/50dma.png) <br>
+![10 days moving average graph](./Visualisations/Results/10dma.png) <br>
+![20 days moving average graph](./Visualisations/Results/20dma.png) <br>
+![50 days moving average graph](./Visualisations/Results/50dma.png) <br>
 A collective graph of all the results is as follows. <br>
-![All moving averages graph](./Visulisation/Results/All.png) <br>
+![All moving averages graph](./Visualisations/Results/All.png) <br>
 *This linear regression model has an accuracy of 88%*
 
 # References
