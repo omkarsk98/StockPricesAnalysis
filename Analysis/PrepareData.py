@@ -14,20 +14,15 @@ def prepareData(data, steps):
           for x as number of records having the opening value of steps+1th day for each
     """
     X, y = list(), list()
-    for i in range(len(data)):
+    for i in range(steps, len(data)):
         # find the end of this pattern
-        end_ix = i + steps
-        # check if we are beyond the dataset
-        if end_ix > len(data)-1:
-            break
-        # gather input and output parts of the pattern
-        seq_x, seq_y = data[i:end_ix, 1:7], data[end_ix, 1:7]
+        seq_x, seq_y = data[i-steps:i, 1:7], data[i,4]
         X.append(seq_x)
         y.append(seq_y)
     features = np.array(X)
     labels = np.array(y)
-    print(labels.shape)
-    # labels = labels.reshape((len(labels)), 1)
+    # features = np.reshape(features, (features.shape[0], features.shape[1], 1))
+    labels = np.reshape(labels, (labels.shape[0], 1))
     return features, labels
 
 

@@ -8,39 +8,45 @@ from keras.layers.core import Dense, Activation, Dropout
 import time
 # clear console after printing keras logs
 import os
-os.system('clear')
-
-hdfc_df = Query.getDataSet()
-
-hdfc_data = np.array(hdfc_df)
+# os.system('clear')
 
 # choose a number of time steps, this says the number of days to be taken for trend formation
 # n_steps + 1 will be used as day for which opening is to be predicted
 n_steps = 60
+split_pct = 60
+hdfc_df = Query.getDataSet(n_steps)
+hdfc_data = np.array(hdfc_df)
 
 features, labels = prepData.prepareData(hdfc_data, n_steps)
-# print(features.shape, labels.shape)
 # (1144, 6, 1) (1144, 1, 1)
-
-train_features, train_labels = features[:900], labels[:900]
-test_features, test_labels = features[900:1000], labels[900:1000]
-print(train_features.shape, train_labels.shape)
+train_features, train_labels = features[:int(
+    features.shape[0]*split_pct)], labels[:int(features.shape[0]*split_pct)]
+test_features, test_labels = features[int(features.shape[0]*split_pct):int(
+    features.shape[0])], labels[int(features.shape[0]*split_pct):int(features.shape[0])]
+print("Train features shape", train_features.shape,
+      "Train labels shape", train_labels.shape)
 # n_features = features.shape[2]
-
 # configure the model
 
-model = Sequential()
-model.add(LSTM(units=100, return_sequences=True, input_shape=(n_steps,train_labels.shape[1]), use_bias=True, dropout=0.8))
-model.add(LSTM(units=50, use_bias=True, dropout=0.8))
-# model.add(LSTM(units=50, use_bias=True, dropout=0.9))
-model.add(Dense(train_labels.shape[1], use_bias=True))
-model.compile(loss='mean_squared_error', optimizer='adam')
+regressor = Sequential()
+regressor.add(LSTM(units = 50, return_sequences = True, input_shape = (train_features.shape[1], 1)))
+regressor.add(Dropout(0.2))
+regressor.add(LSTM(units = 50, return_sequences = True))
+regressor.add(Dropout(0.2))
+regressor.add(LSTM(units = 50, return_sequences = True))
+regressor.add(Dropout(0.2))
+regressor.add(LSTM(units = 50))
+regressor.add(Dropout(0.2))
+regressor.add(Dense(units = 1))
+
 # fit model
 os.system("clear")
+regressor.compile(optimizer = 'adam', loss = 'mean_squared_error')
+regressor.fit(train_features, train_labels, epochs = 15, batch_size = 32)
 print(train_features.shape, train_labels.shape)
-model.fit(train_features, train_labels, epochs=10, batch_size=1, verbose=1, validation_data=(test_features, test_labels))
 
-yhat = model.predict(test_features, verbose=0)
+predicted_stock_price = regressor.predict(test_features)
+predicted_stock_price = sc.inverse_transform(predicted_stock_price)
 
 for i in range(10):
     print(yhat[i], labels[i])
