@@ -1,27 +1,26 @@
-import mysql.connector
+# import mysql.connector
 import pandas as pd
 import json
 # import query string
-QUERIES = json.loads(open("Queries/queries.json").read())
+# QUERIES = json.loads(open("Queries/queries.json").read())
 # configure mysql connection
-mydb = mysql.connector.connect(
-    host="localhost",
-    user="StockAdmin",
-    passwd="random",
-    database="Stocks"
-)
+# mydb = mysql.connector.connect(
+#     host="localhost",
+#     user="StockAdmin",
+#     passwd="random",
+#     database="Stocks"
+# )
 
-mycursor = mydb.cursor()
-q = QUERIES["final"] + ";"
+# mycursor = mydb.cursor()
+# q = QUERIES["final"] + ";"
 # execute query and fetch result
-mycursor.execute(q)
-myresult = mycursor.fetchall()
+# mycursor.execute(q)
+# myresult = mycursor.fetchall()
 # convert to panda dataframe
-hdfc_data = pd.DataFrame(myresult, columns=[
-    'date', 'open', 'high', 'low', 'close', 'volume', '5 days moving average', 'next day open'])
+rawData = pd.read_csv("Source/HDFCBANK NSE.csv")
+hdfc_data = pd.DataFrame(rawData, columns=["Date", "Open", "High", "Low", "Close", "Volume", "20 EMA", "50 EMA"])
 
-
-def getDataSet():
+def getDataSet(steps):
     """
     Returns a python data frame having the following columns
         date:date of that instance
@@ -33,4 +32,6 @@ def getDataSet():
         5 days moving average: moving average of the closing price of last 5 days for that day
         next day open: opening price for the next day   
     """
-    return hdfc_data
+    # check for nan or null values
+    print("checking if any null values are present\n", hdfc_data[steps:].isna().sum(), "\n")
+    return hdfc_data[steps:]
